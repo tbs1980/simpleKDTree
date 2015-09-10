@@ -1,0 +1,17 @@
+#ifndef _SIMPLE_KD_TREE__
+#define _SIMPLE_KD_TREE__
+
+#include <cassert>
+#include <cstddef>
+#include <memory>
+#include <numeric>
+#include <vector>
+#include <cmath>
+#include <limits>
+#include <iostream>
+
+#include "point.hpp"
+#include "node.hpp"
+#include "kdTree.hpp"
+
+#endif //_SIMPLE_KD_TREE__

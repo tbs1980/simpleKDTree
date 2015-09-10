@@ -1,6 +1,9 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.0)
 
-include_directories(${CMAKE_SOURCE_DIR})
+if(NOT CMAKE_BUILD_TYPE)
+    message("** CMAKE_BUILD_TYPE not passed. Assuming Debug")
+    set(CMAKE_BUILD_TYPE "Debug")
+endif()
 
 if(ENABLE_TESTS)
     enable_testing()

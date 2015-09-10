@@ -1,7 +1,6 @@
 #ifndef SIMPLEKDTREE_POINT_HPP
 #define SIMPLEKDTREE_POINT_HPP
 
-#include <vector>
 
 template<typename realScalarType>
 class point
@@ -12,7 +11,7 @@ public:
     {
 
     }
-    
+
     explicit point(std::vector<realScalarType> const& coordinates)
     :mCoordinates(coordinates),mNumDims(coordinates.size())
     {
@@ -24,9 +23,19 @@ public:
         return mNumDims;
     }
 
-    realScalarType getDimension(size_t i)
+    realScalarType getDimension(size_t i) const
     {
         return mCoordinates[i];
+    }
+
+    friend std::ostream & operator << ( std::ostream & output, const point & pnt)
+    {
+        for(size_t i=0;i<pnt.numDims()-1;++i)
+        {
+            output<<pnt.mCoordinates[i]<<",";
+        }
+        output<<pnt.mCoordinates[pnt.numDims()-1]<<std::endl;
+        return output;
     }
 
 private:
