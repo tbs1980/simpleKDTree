@@ -26,6 +26,9 @@ public:
     void buildTree(pointsArrayType const& points)
     {
         mPoints = points;
+
+        std::cout<<"size = "<<mPoints.size()<<std::endl;
+
         mPointIndeces.resize( mPoints.size() );
         std::iota( std::begin(mPointIndeces), std::end(mPointIndeces), 0);
 

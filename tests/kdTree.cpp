@@ -46,24 +46,28 @@ TEST(kdtree, DefaultConstructor)
 
     std::normal_distribution<double> distribution(0.,1.0);
 
-    const size_t numDims = 2;
-    const size_t numPoints = 1000;
+    const size_t numDims = 1;
+    const size_t numPoints = 10;
 
     std::vector<pointType> pts(numPoints);
 
 
-    for(size_t i=0;i<1000;++i)
+    for(size_t i=0;i<numPoints;++i)
     {
         std::vector<double> pv(numDims);
-        for(size_t i=0;i<numDims;++i)
+        for(size_t j=0;j<numDims;++j)
         {
-            pv[i] = distribution(generator);
+            pv[j] = distribution(generator);
         }
 
         pointType pt(pv);
 
-        pts.push_back(pt);
+        std::cout<<i<<"\t"<<pt<<std::endl;
+
+        pts[i] = pt;
     }
+
+    std::cout<<"initial size = "<<pts.size()<<std::endl;
 
     kdTreeType kdtr(pts);
 }
