@@ -62,8 +62,10 @@ TEST(kdtree, DefaultConstructor)
 
         pointType pt(pv);
 
-        //std::cout<<pt<<std::endl;
+        pts.push_back(pt);
     }
+
+    kdTreeType kdtr(pts);
 }
 
 

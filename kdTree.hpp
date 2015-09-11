@@ -15,6 +15,11 @@ public:
 
     kdTree(pointsArrayType const& points)
     {
+        mNumDims = points[0].numDims();
+        for(size_t i=0;i<mNumDims;++i)
+        {
+            assert(mNumDims == points[i].numDims());
+        }
         buildTree(points);
     }
 
@@ -24,8 +29,8 @@ public:
         mPointIndeces.resize( mPoints.size() );
         std::iota( std::begin(mPointIndeces), std::end(mPointIndeces), 0);
 
-        //mRoot = buildSubtree(size_t(0), std::begin(mPointIndeces),
-        //    std::end(mPointIndeces));
+        mRoot = buildSubtree(size_t(0), std::begin(mPointIndeces),
+            std::end(mPointIndeces));
     }
 
     std::unique_ptr< nodeType >&& buildSubtree(size_t splitDimension,
@@ -33,6 +38,8 @@ public:
         std::vector<size_t>::iterator end)
     {
         auto rangeSize = std::distance(begin, end);
+
+        std::cout<<"rangeSize = "<<rangeSize<<std::endl;
 
         if(rangeSize == 0)
         {
@@ -60,8 +67,8 @@ public:
 
         auto ret = std::unique_ptr< nodeType >( new nodeType(splitDimension,*median) );
 
-        ret->addLeftChild( buildSubtree( (splitDimension +1)%mPoints.numDims(),begin, median)  );
-        ret->addRightChild( buildSubtree( (splitDimension +1)%mPoints.numDims(),median + 1, end) );
+        ret->addLeftChild( buildSubtree( (splitDimension +1)%mNumDims,begin, median)  );
+        ret->addRightChild( buildSubtree( (splitDimension +1)%mNumDims,median + 1, end) );
 
         return std::move(ret);
     }
@@ -70,6 +77,7 @@ private:
     std::unique_ptr< nodeType > mRoot;
     pointsArrayType mPoints;
     std::vector<size_t> mPointIndeces;
+    size_t mNumDims;
 };
 
 
