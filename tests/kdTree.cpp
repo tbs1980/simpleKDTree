@@ -62,12 +62,8 @@ TEST(kdtree, DefaultConstructor)
 
         pointType pt(pv);
 
-        std::cout<<i<<"\t"<<pt<<std::endl;
-
         pts[i] = pt;
     }
-
-    std::cout<<"initial size = "<<pts.size()<<std::endl;
 
     kdTreeType kdtr(pts);
 }

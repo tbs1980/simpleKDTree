@@ -12,7 +12,6 @@ public:
     ,mLeftChild( std::unique_ptr<childType>(nullptr) ),mRightChild( std::unique_ptr<childType>(nullptr) )
     ,mHasLeftChild(false),mHasRightChild(false)
     {
-        std::cout<<"Created node with index = "<<treeIndex<<" for dim "<<splitDimension<<std::endl;
     }
 
     std::unique_ptr<childType>&& leftChild()

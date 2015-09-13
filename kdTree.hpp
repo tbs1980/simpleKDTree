@@ -27,8 +27,6 @@ public:
     {
         mPoints = points;
 
-        std::cout<<"size = "<<mPoints.size()<<std::endl;
-
         mPointIndeces.resize( mPoints.size() );
         std::iota( std::begin(mPointIndeces), std::end(mPointIndeces), 0);
 
@@ -41,8 +39,6 @@ public:
         std::vector<size_t>::iterator end)
     {
         auto rangeSize = std::distance(begin, end);
-
-        std::cout<<"rangeSize = "<<rangeSize<<std::endl;
 
         if(rangeSize == 0)
         {
