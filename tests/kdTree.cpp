@@ -8,7 +8,6 @@ TEST(node, DefaultConstructor)
     typedef double realScalarType;
     typedef point<realScalarType> pointType;
     typedef node<pointType> nodeType;
-    typedef nodeType::childType childType;
 
     nodeType nd(size_t(0),size_t(0));
 

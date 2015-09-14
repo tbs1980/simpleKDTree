@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 2.8)
 
 find_package(GTest REQUIRED)
+find_package(Threads REQUIRED)
 
 if(GTEST_FOUND)
     include_directories(${GTEST_INCLUDE_DIRS})
@@ -49,10 +50,10 @@ if(GTEST_FOUND)
 
 
     add_executable(point point.cpp)
-    target_link_libraries(point ${GTEST_BOTH_LIBRARIES})
+    target_link_libraries(point ${GTEST_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
     add_test(gest_point point)
 
     add_executable(kdTree kdTree.cpp)
-    target_link_libraries(kdTree ${GTEST_BOTH_LIBRARIES})
+    target_link_libraries(kdTree ${GTEST_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
     add_test(gest_kdtree kdTree)
 endif()
